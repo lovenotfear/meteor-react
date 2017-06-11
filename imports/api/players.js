@@ -2,6 +2,19 @@ import { Mongo } from 'meteor/mongo';
 
 export const Players = new Mongo.Collection('players');
 
+Players.allow({
+  insert() {return false},
+  remove() {return false},
+  update() {return false}
+});
+
+Players.deny({
+  insert() {return true},
+  remove() {return true},
+  update() {return true}
+});
+
+
 const PlayerSchema = new SimpleSchema({
   name: { type: String },
   team: { type: String },
